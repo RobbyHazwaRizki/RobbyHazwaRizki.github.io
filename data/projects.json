@@ -1,0 +1,26 @@
+[
+  {
+    "id": "saintara",
+    "title": "SAINTARA",
+    "category": "Web",
+    "label": "Segera hadir",
+    "status": "soon",
+    "summary": "Aplikasi kuis IPA bergamifikasi untuk siswa SD. Coba mini game-nya di detail project.",
+    "stack": [],
+    "links": { "demo": "", "repo": "" },
+    "game": true,
+    "visible": true
+  },
+  {
+    "id": "itamae-sushi",
+    "title": "Itamae Sushi",
+    "category": "Web",
+    "label": "Project pertama",
+    "status": "done",
+    "summary": "Website company profile restoran sushi, dibuat di awal kuliah.",
+    "stack": [],
+    "links": { "demo": "", "repo": "" },
+    "game": false,
+    "visible": true
+  }
+]

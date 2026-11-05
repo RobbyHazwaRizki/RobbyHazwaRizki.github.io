@@ -1,0 +1,5 @@
+[
+  { "q": "Planet mana yang paling dekat dengan Matahari?", "options": ["Merkurius", "Bumi", "Mars"], "answer": 0 },
+  { "q": "Bagian tumbuhan mana yang menyerap air dari tanah?", "options": ["Daun", "Akar", "Bunga"], "answer": 1 },
+  { "q": "Apa yang terjadi pada es saat mencair?", "options": ["Menjadi gas", "Tetap padat", "Berubah menjadi air"], "answer": 2 }
+]
