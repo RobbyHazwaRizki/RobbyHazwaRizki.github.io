@@ -17,9 +17,9 @@
 </head>
 <body>
 <a class="skip" href="#tentang">Langsung ke konten</a>
-<header id="top">
+<header id="top" class="dark">
   <div class="wrap bar">
-    <a class="brand" href="#hero">Robby H.</a>
+    <a class="brand" href="#hero">Robby Hazwarizki Wijaya</a>
     <nav aria-label="Menu utama"><ul id="links"></ul></nav>
     <a id="cv" class="btn sm" hidden>Unduh CV</a>
     <button id="theme" class="btn alt sm" type="button" aria-pressed="false">Mode gelap</button>
@@ -27,11 +27,14 @@
   </div>
 </header>
 <main>
-  <section id="hero" class="hero">
-    <span class="shape s1" data-speed=".5" aria-hidden="true"></span>
-    <span class="shape s2" data-speed=".25" aria-hidden="true"></span>
-    <span class="shape s3" data-speed="-.15" aria-hidden="true"></span>
-    <div class="wrap" data-speed=".08">
+  <section id="hero" class="hero dark">
+    <span class="lyr dots" data-speed=".7" data-origin="top" aria-hidden="true"></span>
+    <span class="lyr ghost" data-speed=".5" data-origin="top" aria-hidden="true">EdTech</span>
+    <span class="lyr ring h1r" data-speed=".35" data-origin="top" aria-hidden="true"></span>
+    <span class="lyr disc h2d" data-speed=".15" data-origin="top" aria-hidden="true"></span>
+    <span class="lyr disc h3d" data-speed="-.2" data-origin="top" aria-hidden="true"></span>
+    <span class="lyr sq h4s" data-speed="-.45" data-origin="top" aria-hidden="true"></span>
+    <div class="wrap">
       <p class="mono" data-site="role">Developer EdTech</p>
       <h1 data-site="name">Robby Hazwarizki</h1>
       <p class="lead" data-site="tagline">Mantan guru SD yang kini membangun aplikasi belajar untuk anak. Paham isi kelasnya, bisa bangun sistemnya dari nol.</p>
@@ -42,7 +45,9 @@
     </div>
   </section>
 
-  <section id="tentang" data-nav="Tentang">
+  <section id="tentang" data-nav="Tentang" class="dark">
+    <span class="lyr dots t1" data-speed=".5" aria-hidden="true"></span>
+    <span class="lyr ring t2" data-speed="-.25" aria-hidden="true"></span>
     <div class="wrap narrow">
       <h2>Tentang</h2>
       <p data-site="about">Aku pernah mengajar di SD, jadi aku tahu apa yang bikin anak cepat bosan dan apa yang bikin mereka mau coba lagi.</p>
@@ -53,12 +58,17 @@
     <div class="wrap"><h2>Pencapaian</h2><div id="stats" class="grid"></div></div>
   </section>
 
-  <section id="project" data-nav="Project">
+  <section id="project" data-nav="Project" class="tint">
+    <span class="lyr ghost pj" data-speed=".4" aria-hidden="true">Project</span>
     <div class="wrap">
       <h2>Project</h2>
       <div id="filters" class="row" role="group" aria-label="Filter project"></div>
       <div id="project-list" class="grid"></div>
     </div>
+  </section>
+
+    <section id="now" data-nav="Progres" hidden>
+    <div class="wrap narrow"><h2>Sedang dikerjakan</h2><ol id="now-list" class="now"></ol></div>
   </section>
 
   <section id="experience" data-nav="Pengalaman" hidden>
@@ -73,8 +83,9 @@
     <div class="wrap"><h2>Perjalanan</h2><ul id="journey-list" class="list"></ul></div>
   </section>
 
-  <section id="kontak" data-nav="Kontak" class="contact" hidden>
-    <span class="shape s4" data-speed=".3" aria-hidden="true"></span>
+  <section id="kontak" data-nav="Kontak" class="contact dark" hidden>
+    <span class="lyr ring c1" data-speed=".3" aria-hidden="true"></span>
+    <span class="lyr disc c2" data-speed="-.25" aria-hidden="true"></span>
     <div class="wrap narrow">
       <h2>Kontak</h2>
       <p>Lagi buka peluang developer full-time di bidang EdTech. Kirim kabar lewat salah satu jalur ini.</p>

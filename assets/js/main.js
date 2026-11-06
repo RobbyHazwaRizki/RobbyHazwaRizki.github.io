@@ -5,7 +5,7 @@ import {initParallax} from './parallax.js';
 const $=(s,r=document)=>r.querySelector(s);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
 const load=async u=>{try{return await (await fetch(u)).json()}catch(e){return null}};
-const link=(txt,href,cls)=>{const a=el('a',cls,txt);a.href=href;if(/^https?:/.test(href)){a.target='_blank';a.rel='noopener noreferrer'}return a};
+const link=(txt,href,cls)=>{const a=el('a',cls,txt);a.href=href;if(/^https?:|\.pdf$/i.test(href)){a.target='_blank';a.rel='noopener noreferrer'}return a};
 const chips=(box,list)=>{if(list?.length){const r=el('div','row');list.forEach(t=>r.append(el('span','chip',t)));box.append(r)}};
 const dlg=$('#dlg'),body=$('#dlg-body');
 
@@ -27,12 +27,12 @@ function renderSite(s){
   const contacts=[['Email',s.email&&'mailto:'+s.email],['LinkedIn',s.linkedin],['GitHub',s.github]].filter(c=>c[1]);
   const box=$('#contacts');
   contacts.forEach(([t,h])=>box.append(link(t,h,'btn alt')));
-  if(s.cv){const a=$('#cv');a.href=s.cv;a.hidden=false;box.append(link('Unduh CV',s.cv,'btn'))}
+  if(s.cv){const a=$('#cv');a.href=s.cv;a.target='_blank';a.rel='noopener noreferrer';a.hidden=false;box.append(link('Lihat CV',s.cv,'btn'))}
   const hasContact=contacts.length>0||!!s.cv;
   $('#kontak').hidden=!hasContact;
   $('#hero-contact').hidden=!hasContact;
   const on=k=>s.sections?.[k]&&s[k]?.length;
-  ['achievements','experience','stack','journey'].forEach(k=>{$('#'+k).hidden=!on(k)});
+  ['achievements','now','experience','stack','journey'].forEach(k=>{$('#'+k).hidden=!on(k)});
   if(on('achievements'))s.achievements.forEach(a=>{
     const d=el('div','card stat');
     const b=el('b',null,a.value);
@@ -40,7 +40,7 @@ function renderSite(s){
     d.append(b,el('span',null,a.label));
     $('#stats').append(d);
   });
-  ['experience','journey'].forEach(k=>{if(on(k))s[k].forEach(i=>{
+  ['journey'].forEach(k=>{if(on(k))s[k].forEach(i=>{
     const li=el('li','card');
     li.append(el('h3',null,i.title));
     const meta=[i.org,i.period].filter(Boolean).join(' / ');
@@ -49,6 +49,39 @@ function renderSite(s){
     $('#'+k+'-list').append(li);
   })});
   if(on('stack'))s.stack.forEach(t=>$('#stack-list').append(el('span','chip',t)));
+  if(on('now'))s.now.slice(0,5).forEach(n=>{
+    const li=el('li');
+    li.append(el('span','mono',n.date||''));
+    const b=el('div','nb');
+    if(n.tag)b.append(el('span','tag',n.tag));
+    b.append(el('p',null,n.text));
+    if(n.link)b.append(link('Lihat selengkapnya',n.link,'more'));
+    li.append(b);
+    $('#now-list').append(li);
+  });
+  if(on('experience'))s.experience.forEach(i=>{
+    const li=el('li','card exp'+(i.photos?.length?' has-ph':''));
+    const t=el('div','exp-t');
+    t.append(el('h3',null,i.title));
+    const meta=[i.org,i.period].filter(Boolean).join(' / ');
+    if(meta)t.append(el('p','mono',meta));
+    if(i.text)t.append(el('p',null,i.text));
+    li.append(t);
+    if(i.photos?.length){
+      const ph=el('div','exp-p');
+      i.photos.forEach(src=>{
+        const alt=`Dokumentasi ${i.title}`;
+        const b=el('button','ph');
+        b.type='button';b.setAttribute('aria-label','Perbesar foto');
+        const im=el('img');im.src=src;im.alt=alt;im.loading='lazy';
+        b.append(im);
+        b.addEventListener('click',()=>zoom(src,alt));
+        ph.append(b);
+      });
+      li.append(ph);
+    }
+    $('#experience-list').append(li);
+  });
 }
 
 function renderProjects(list){
@@ -71,22 +104,46 @@ function draw(list){
   const g=$('#project-list');
   g.replaceChildren();
   list.forEach(p=>{
-    const c=el('article','card in');
-    if(p.label)c.append(el('span','tag'+(p.status==='soon'?' soon':''),p.label));
-    c.append(el('h3',null,p.title),el('p',null,p.summary||''));
-    chips(c,p.stack);
+    const c=el('article','card project in');
+    const fig=el('div','shot');
+    if(p.image){
+      const im=el('img');
+      im.src=p.image;im.alt=p.imageAlt||`Tampilan ${p.title}`;im.loading='lazy';
+      fig.append(im);
+    }else{
+      fig.classList.add('empty');
+      fig.append(el('span',null,p.title.charAt(0)));
+    }
+    c.append(fig);
+    const info=el('div','info');
+    if(p.label)info.append(el('span','tag'+(p.status==='soon'?' soon':''),p.label));
+    info.append(el('h3',null,p.title),el('p',null,p.summary||''));
+    chips(info,p.stack);
     const b=el('button','btn sm','Lihat detail');
     b.type='button';
     b.addEventListener('click',()=>openDetail(p));
-    c.append(b);
+    info.append(b);
+    c.append(info);
     g.append(c);
   });
+}
+
+function zoom(src,alt){
+  body.replaceChildren();
+  const im=el('img','zoom');im.src=src;im.alt=alt;
+  body.append(im);
+  dlg.showModal();
 }
 
 function openDetail(p){
   body.replaceChildren();
   const h=el('h2',null,p.title);h.id='dlg-title';
   body.append(h,el('p',null,p.summary||''));
+  if(p.gallery?.length){
+    const gl=el('div','gallery');
+    p.gallery.forEach(s=>{const im=el('img');im.src=s;im.alt=`Tampilan ${p.title}`;im.loading='lazy';gl.append(im)});
+    body.append(gl);
+  }
   chips(body,p.stack);
   const row=el('div','row');
   [['Demo',p.links?.demo],['Repo',p.links?.repo]].forEach(([t,u])=>{if(u)row.append(link(t,u,'btn alt'))});

@@ -1,15 +1,29 @@
 {
-  "name": "Robby Hazwarizki",
+  "name": "Robby Hazwarizki Wijaya",
   "role": "Developer EdTech",
-  "tagline": "Mantan guru SD yang kini membangun aplikasi belajar untuk anak. Paham isi kelasnya, bisa bangun sistemnya dari nol.",
-  "about": "Aku pernah mengajar di SD, jadi aku tahu apa yang bikin anak cepat bosan dan apa yang bikin mereka mau coba lagi. Sekarang aku kuliah Sistem Informasi dan membangun aplikasi belajar yang menjawab masalah itu. Aku sedang mencari posisi developer full-time di bidang EdTech.",
-  "email": "",
-  "linkedin": "",
+  "tagline": "Fresh Graduate Sistem Informasi, Menyatukan Pendekatan Edukatif dengan Inovasi Sistem Informasi.",
+  "about": "Seorang Fresh Graduater yang memiliki beberapa pengalaman baik dari dunia pendidikan, dan non pendidikan. Yang inovatif dengan rekam jejak dalam pengembangan aplikasi web dan infrastruktur jaringan lokal. Menggabungkan keterampilan teknis (Full-stack Web Dev, konfigurasi WSL/Docker, manajemen NAS/Server Linux) dengan pengalaman sebelumnya sebagai pendidik untuk merancang solusi digital yang user-centric. Terbukti mampu memimpin proyek dari tahap analisis hingga evaluasi (System Usability Scale). Mencari peluang karir awal di bidang Information Technology untuk menerapkan kemampuan problem solving dan teknis secara langsung.",
+  "email": "robbyhazwarizky27@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/Robby Hazwarizki Wijaya",
   "github": "https://github.com/RobbyHazwaRizki",
   "cv": "",
-  "sections": { "achievements": true, "experience": false, "stack": false, "journey": false },
+  "sections": { "achievements": true, "now": true, "experience": true, "stack": false, "journey": false },
+"now": [
+  { "date": "Nov 2026", "tag": "Membangun", "text": "Merapikan SAINTARA menuju rilis" },
+  { "date": "Nov 2026", "tag": "Belajar", "text": "Menyusun web portofolio ini" }
+],
+"experience": [
+  {
+    "title": "Guru SD",
+    "org": "Nama sekolah",
+    "period": "2021 - 2023",
+    "text": "Peran dan hasilnya, 1 sampai 2 kalimat.",
+    "photos": [
+      "assets/img/experience/guru-1.webp"
+    ]
+  }
+],
   "achievements": [],
-  "experience": [],
   "stack": [],
   "journey": []
 }
