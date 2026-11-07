@@ -158,6 +158,25 @@ dialog::backdrop{background:rgba(11,26,25,.6)}
 .now .nb{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline}
 .now .nb p{flex:1 1 260px}
 .now .more{font-size:.875rem}
+/* Galeri */
+#galeri{background:var(--surface)}
+.gal-view{--gw:clamp(150px,22vw,260px);--gh:clamp(110px,15vw,180px);--gg:14px;margin-top:8px;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.gal-view.drag{cursor:grabbing}
+.gal-track{position:relative;display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,var(--gh));grid-auto-columns:var(--gw);gap:var(--gg);width:max-content;will-change:transform}
+.gal-cell{padding:0;border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--shot);cursor:inherit;display:block}
+.gal-cell img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .4s ease}
+.gal-cell:hover img{transform:scale(1.05)}
+/* Lapisan seragam di setiap section */
+.t1{inset:-30% -10%}
+.ghost.sg,.ghost.pj{font-size:clamp(5rem,15vw,12rem)}
+.ghost.sg{right:-2%;top:2%}
+#kontak .ghost.sg{right:auto;left:-1%;top:auto;bottom:-4%}
+#project.tint{background-image:none}
+.gal-view{position:relative}
+.o1{width:clamp(70px,10vw,140px);background:var(--d1);right:8%;bottom:6%}
+.o2{width:clamp(50px,7vw,100px);background:var(--d2);left:4%;bottom:10%}
+.o3{width:clamp(160px,24vw,320px);right:-6%;bottom:-10%}
+.o4{width:clamp(140px,20vw,280px);left:-5%;top:-6%}
 
 /* Pengalaman kerja dengan kolom foto */
 .exp.has-ph{display:grid;grid-template-columns:1fr minmax(200px,40%);gap:28px;align-items:start}
@@ -182,4 +201,11 @@ dialog::backdrop{background:rgba(11,26,25,.6)}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
   .js .card:not(.in),.js [data-reveal]:not(.in){opacity:1;translate:none}
+}
+.brand{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media (max-width:899px){
+  #menu{display:inline-block}
+  nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--bd)}
+  header.open nav{display:block}
+  nav ul{flex-direction:column;padding:12px 24px}
 }

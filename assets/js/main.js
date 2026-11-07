@@ -1,6 +1,7 @@
 import {initTheme} from './theme.js';
 import {initReveal} from './reveal.js';
 import {initParallax} from './parallax.js';
+import {initGallery} from './gallery.js';
 
 const $=(s,r=document)=>r.querySelector(s);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
@@ -15,6 +16,7 @@ async function init(){
   if(site)renderSite(site);
   renderProjects((projects||[]).filter(p=>p.visible!==false));
   buildNav();
+  decorate();
   $('#year').textContent=new Date().getFullYear();
   $('#dlg-close').addEventListener('click',()=>dlg.close());
   dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
@@ -32,7 +34,7 @@ function renderSite(s){
   $('#kontak').hidden=!hasContact;
   $('#hero-contact').hidden=!hasContact;
   const on=k=>s.sections?.[k]&&s[k]?.length;
-  ['achievements','now','experience','stack','journey'].forEach(k=>{$('#'+k).hidden=!on(k)});
+  [['achievements','achievements'],['now','now'],['experience','experience'],['stack','stack'],['journey','journey'],['gallery','galeri']].forEach(([k,id])=>{const n=document.getElementById(id);if(n)n.hidden=!on(k)});
   if(on('achievements'))s.achievements.forEach(a=>{
     const d=el('div','card stat');
     const b=el('b',null,a.value);
@@ -49,6 +51,7 @@ function renderSite(s){
     $('#'+k+'-list').append(li);
   })});
   if(on('stack'))s.stack.forEach(t=>$('#stack-list').append(el('span','chip',t)));
+  if(on('gallery'))initGallery({view:$('#gal-view'),track:$('#gal-track'),items:s.gallery,onOpen:zoom});
   if(on('now'))s.now.slice(0,5).forEach(n=>{
     const li=el('li');
     li.append(el('span','mono',n.date||''));
@@ -192,11 +195,29 @@ async function startQuiz(){
   show();
 }
 
+function decorate(){
+  const ghost={tentang:'Tentang',achievements:'Hasil',project:'Project',now:'Progres',experience:'Kerja',stack:'Stack',journey:'Jejak',galeri:'Galeri',kontak:''};
+  const deco={project:'ring o3',now:'disc o1',experience:'ring o3',galeri:'ring o4',achievements:'disc o2',stack:'disc o1',journey:'ring o3'};
+  document.querySelectorAll('section[data-nav]').forEach(s=>{
+    const add=(cls,speed,txt)=>{
+      const n=el('span','lyr '+cls,txt);
+      n.dataset.speed=speed;n.setAttribute('aria-hidden','true');
+      s.prepend(n);
+    };
+    if(deco[s.id]&&!s.querySelector('.ring,.disc'))add(deco[s.id],-.2);
+    if(ghost[s.id]&&!s.querySelector('.ghost'))add('ghost sg',.3,ghost[s.id]);
+    if(!s.querySelector('.dots'))add('dots',.45);
+  });
+}
+
 function buildNav(){
   const ul=$('#links');
+  ul.replaceChildren();
   document.querySelectorAll('section[data-nav]:not([hidden])').forEach(s=>{
     const li=el('li');li.append(link(s.dataset.nav,'#'+s.id));ul.append(li);
   });
+  if(buildNav.done)return;
+  buildNav.done=true;
   $('#menu').addEventListener('click',e=>{
     const o=$('header').classList.toggle('open');
     e.currentTarget.setAttribute('aria-expanded',String(o));

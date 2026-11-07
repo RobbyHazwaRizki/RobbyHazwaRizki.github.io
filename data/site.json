@@ -2,27 +2,50 @@
   "name": "Robby Hazwarizki Wijaya",
   "role": "Developer EdTech",
   "tagline": "Fresh Graduate Sistem Informasi, Menyatukan Pendekatan Edukatif dengan Inovasi Sistem Informasi.",
-  "about": "Seorang Fresh Graduater yang memiliki beberapa pengalaman baik dari dunia pendidikan, dan non pendidikan. Yang inovatif dengan rekam jejak dalam pengembangan aplikasi web dan infrastruktur jaringan lokal. Menggabungkan keterampilan teknis (Full-stack Web Dev, konfigurasi WSL/Docker, manajemen NAS/Server Linux) dengan pengalaman sebelumnya sebagai pendidik untuk merancang solusi digital yang user-centric. Terbukti mampu memimpin proyek dari tahap analisis hingga evaluasi (System Usability Scale). Mencari peluang karir awal di bidang Information Technology untuk menerapkan kemampuan problem solving dan teknis secara langsung.",
+  "about": "Seorang Fresh Graduate yang memiliki beberapa pengalaman baik dari dunia pendidikan, dan non pendidikan. Yang inovatif dengan rekam jejak dalam pengembangan aplikasi web dan infrastruktur jaringan lokal. Menggabungkan keterampilan teknis (Full-stack Web Dev, konfigurasi WSL/Docker, manajemen NAS/Server Linux) dengan pengalaman sebelumnya sebagai pendidik untuk merancang solusi digital yang user-centric. Terbukti mampu memimpin proyek dari tahap analisis hingga evaluasi (System Usability Scale). Mencari peluang karir awal di bidang Information Technology untuk menerapkan kemampuan problem solving dan teknis secara langsung.",
   "email": "robbyhazwarizky27@gmail.com",
-  "linkedin": "https://www.linkedin.com/in/Robby Hazwarizki Wijaya",
+  "linkedin": "www.linkedin.com/in/robby-hazwarizki-wijaya-0a7544432",
   "github": "https://github.com/RobbyHazwaRizki",
   "cv": "",
-  "sections": { "achievements": true, "now": true, "experience": true, "stack": false, "journey": false },
-"now": [
-  { "date": "Nov 2026", "tag": "Membangun", "text": "Merapikan SAINTARA menuju rilis" },
-  { "date": "Nov 2026", "tag": "Belajar", "text": "Menyusun web portofolio ini" }
-],
-"experience": [
-  {
-    "title": "Guru SD",
-    "org": "Nama sekolah",
-    "period": "2021 - 2023",
-    "text": "Peran dan hasilnya, 1 sampai 2 kalimat.",
-    "photos": [
-      "assets/img/experience/guru-1.webp"
-    ]
-  }
-],
+  "sections": { "achievements": true, "now": true, "experience": true, "stack": false, "journey": false, "gallery": true },
+  "now": [
+    { "date": "Nov 2026", "tag": "Membangun", "text": "Merapikan SAINTARA menuju rilis" },
+    { "date": "Nov 2026", "tag": "Belajar", "text": "Menyusun web portofolio ini" }
+  ],
+  "experience": [
+    {
+      "title": "Departure Control System",
+      "org": "PT Pelita Indonesia Djaya",
+      "period": "2024 - 2025",
+      "text": "Mengatur jumlah muatan pelanggan, termasuk penimbangan. Memastikan data penumpang sesuai dengan yang diinput dan memastikan kehadiran penumpang untuk keberangkatan.",
+      "photos": ["assets/img/experience/dcs-1.webp"]
+    },
+    {
+      "title": "Guru SD",
+      "org": "SD Bina Siswa Jakarta Timur",
+      "period": "2023 - 2024",
+      "text": "Mengajar mata pelajaran tingkat sekolah dasar dengan pendekatan yang interaktif. Membimbing siswa dalam pengembangan kemampuan akademik, keterampilan dasar, serta pembentukan karakter. Menyusun rencana belajar, evaluasi, dan laporan perkembangan siswa secara berkala.",
+      "photos": ["assets/img/experience/guru-1.webp"]
+    },
+    {
+      "title": "Pelatih Ekstrakurikuler",
+      "org": "SD dan SMP",
+      "period": "2023 - 2024",
+      "text": "Membimbing dan melatih anggota kepramukaan dalam kegiatan kepemimpinan, kedisiplinan, dan kerja sama tim. Mengembangkan talenta berbakat sesuai dengan kelebihannya.",
+      "photos": ["assets/img/experience/pramuka-1.webp"]
+    },
+    {
+      "title": "Staff",
+      "org": "PT Servitama Aditama Mitra Karya",
+      "period": "2022 - 2023",
+      "text": "Mengelola dokumen administrasi dan memastikan kelengkapan berkas untuk mendukung kelancaran proses ekspor impor. Menginput data dari berkas klien menjadi data yang diajukan ke bea cukai dan pelabuhan. Membantu koordinasi data transaksi serta mendukung proses pengarsipan dan pelaporan secara sistematis.",
+      "photos": ["assets/img/experience/staff-1.webp"]
+    }
+  ],
+  "gallery": [
+    { "src": "assets/img/galeri/foto-1.webp", "alt": "Foto Robby" },
+    { "src": "assets/img/galeri/foto-2.webp", "alt": "Foto Robby" }
+  ],
   "achievements": [],
   "stack": [],
   "journey": []
